@@ -1,0 +1,2 @@
+--> Flask. send request on open
+--> cookie to save settings

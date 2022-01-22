@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://use.fontawesome.com/27808ca44f.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/button.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/searchBar.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: rgb(0, 0, 255);
+            overflow-x: hidden;            
+            width: 100%;
+            
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        body::-webkit-scrollbar {
+        display: none;
+        }
+
+        /* Hide scrollbar for IE and Edge */
+        body {
+        -ms-overflow-style: none;
+        }
+
+        .main{
+            width: 100%;
+            position:fixed;
+            height: 100vh;
+        }
+        .menu{
+            height: 100%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 30px 30px 0 0;            
+        }
+        .topBar{
+            z-index: 5;
+            height:100px;
+            color:#ffff;
+            text-align: center;
+            padding-top: 30px;
+            
+        }
+        .train{
+            position: absolute;
+            padding-top:40px;
+            padding-left: 30px;
+        }
+
+
+        .responseDataContainer1{
+            pointer-events: none;
+            position: absolute;
+            z-index: 11;
+            padding-top:300px;
+            animation-name: moveUp;
+            animation-duration: 0.7s;
+            
+            width: 100%;
+            
+            
+        }
+        .responseDataContainer2{
+            height: 100vh;
+            background-color: rgb(159, 193, 255);
+            border-radius: 30px 30px 0 0;
+            padding:0 20px 0 20px;
+        }
+        .contentContainer{
+            width: 100%;
+            float: left;
+            border-bottom: 1px solid grey;
+            visibility: collapse;
+            position: absolute;
+        }
+        .content>h1{
+            text-align: center;
+        }
+        .container{       
+            right: 30px;
+        }
+        .container>img{
+            padding-top: 16px;
+            float: left;
+        }
+        .destination{
+            float: left;
+            padding-left:30px;
+        }
+        .time{
+            float: right;
+            padding-right: 10px;
+        }
+        #containerHidden{
+            visibility: collapse;
+            position: absolute;
+        }
+
+        @keyframes moveUp {
+            from {padding-top: 100vh;}
+            to {padding-top: 300px;}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="train">
+            <image src="{{ url_for('static', filename='images/sl_train2.png')}}" alt="" height=" 100px">
+        </div>
+        <div class="topBar"><h1>SLapp</h1></div>
+        <div class="menu">
+            <div class="wrap">
+                <form class="search" action="/" method="POST">
+                   <input type="text" class="searchTerm" placeholder="Station"  name = "content" id = "content">
+                   <button type="submit" class="searchButton">
+                    <img src="{{ url_for('static', filename='images/search.svg')}}" alt="" height="20px">
+                  </button>
+                </form>
+
+             </div>
+             <div class="buttons">
+                 <div class="b1">
+                    <button class="button" onclick="changeDirection()">
+                        <img src="{{ url_for('static', filename='images/arrow.svg')}}" alt="" height="30px">
+                    </button>
+                 </div>
+                <div class="b2">
+                    <button class="button" onclick="commingSoon()">
+                        <img src="{{ url_for('static', filename='images/subway.svg')}}" alt="" height="30px">
+                    </button>
+                </div>
+                
+             </div>
+
+        </div>
+
+    </div>
+    <div class="responseDataContainer1">
+        <div class="responseDataContainer2">
+            <div class="content">
+                <h1 class="thisStation"></h1>
+
+            </div>
+         </div>
+     </div>
+</body>
+<script>
+    // OnStart
+    // Everything starts in hidden state. On start this part runs and makes direction1 visable
+    var train = document.querySelectorAll("#direction0");
+    for (var i=0; i < train.length; i++) {
+        train[i].style.visibility= "visible";
+        train[i].style.position = "relative";
+    }
+
+    // OnClick on "change direction" button
+    let number = 2;
+    let oldDirection = "#direction0"
+    function changeDirection(){
+        
+        // the previus direction is made invisable again
+        var train = document.querySelectorAll(oldDirection);
+        for (var i=0; i < train.length; i++) {
+
+            train[i].style.visibility= "collapse";
+            train[i].style.position = "absolute";
+            
+        }
+
+        // Makes the new id
+        let direction = "#direction";
+        direction = direction.concat(number.toString());
+        oldDirection = direction;
+        var train = document.querySelectorAll(direction);
+
+        // if the number of directions runs out the counter resets
+        if(train.length == 0){
+            // if it is the case, the id string has to be remade
+            number = 0;
+            direction = "#direction";
+            direction = direction.concat(number.toString());
+            oldDirection = direction;  
+        }
+            
+        // The new direction is made visible
+        var train = document.querySelectorAll(direction);
+        console.log(direction)
+        for (var i=0; i < train.length; i++) {
+            console.log("running")
+            train[i].style.visibility= "visible";
+            train[i].style.position = "relative";
+        }
+
+        // add to the number so the direction will change
+        number = number + 1; 
+    }
+    // OnClick on "comming soon" button
+    function commingSoon() {
+        alert("comming soon");
+    }
+</script>
+</html>

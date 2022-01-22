@@ -1,0 +1,33 @@
+.buttons{
+    display: flex;
+    padding-top: 50px;
+    text-align: center;
+    margin: auto;
+    
+}
+.b1{
+    margin: auto;
+    padding: 20px;
+}
+.b2{
+    margin: auto;
+    padding:20px;
+}
+.button{
+    outline: none;
+    border-radius: 20px;
+    position: relative;
+    background-color: #307fdc;
+    border: none;
+    font-size: 10px;
+    color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+.button:active{
+    background-color: #296cb9;;
+}

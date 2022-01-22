@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<script src="https://use.fontawesome.com/27808ca44f.js"></script>
+<link href="{{ url_for('static', filename='style/button.css')}}" rel="stylesheet"/>
+<link href="{{ url_for('static', filename='style/searchBar.css')}}" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Document</title>
+<style>
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: rgb(0, 0, 255);
+            overflow-x: hidden;            
+            width: 100%;
+            
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        body::-webkit-scrollbar {
+        display: none;
+        }
+
+        /* Hide scrollbar for IE and Edge */
+        body {
+        -ms-overflow-style: none;
+        }
+
+        .main{
+            width: 100%;
+            position:fixed;
+            height: 100vh;
+        }
+        .menu{
+            height: 100%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 30px 30px 0 0;            
+        }
+        .topBar{
+            z-index: 5;
+            height:100px;
+            color:#ffff;
+            text-align: center;
+            padding-top: 30px;
+            
+        }
+        .train{
+            position: absolute;
+            padding-top:40px;
+            padding-left: 30px;
+        }
+
+
+        .responseDataContainer1{
+            pointer-events: none;
+            position: absolute;
+            z-index: 11;
+            padding-top:300px;
+            animation-name: moveUp;
+            animation-duration: 0.7s;
+            
+            width: 100%;
+            
+            
+        }
+        .responseDataContainer2{
+            height: 100vh;
+            background-color: rgb(159, 193, 255);
+            border-radius: 30px 30px 0 0;
+            padding:0 20px 0 20px;
+        }
+        .contentContainer{
+            width: 100%;
+            float: left;
+            border-bottom: 1px solid grey;
+            visibility: collapse;
+            position: absolute;
+        }
+        .content>h1{
+            text-align: center;
+        }
+        .container{       
+            right: 30px;
+        }
+        .container>img{
+            padding-top: 16px;
+            float: left;
+        }
+        .destination{
+            float: left;
+            padding-left:30px;
+        }
+        .time{
+            float: right;
+            padding-right: 10px;
+        }
+        #containerHidden{
+            visibility: collapse;
+            position: absolute;
+        }
+
+        @keyframes moveUp {
+            from {padding-top: 100vh;}
+            to {padding-top: 300px;}
+        }
+
+    </style>
+</head>
+<body>
+<div class="main">
+<div class="train">
+<image alt="" height=" 100px" src="{{ url_for('static', filename='images/sl_train2.png')}}"/>
+</div>
+<div class="topBar"><h1>SLapp</h1></div>
+<div class="menu">
+<div class="wrap">
+<form action="/" class="search" method="POST">
+<input class="searchTerm" id="content" name="content" placeholder="Station" type="text"/>
+<button class="searchButton" type="submit">
+<img alt="" height="20px" src="{{ url_for('static', filename='images/search.svg')}}"/>
+</button>
+</form>
+</div>
+<div class="buttons">
+<div class="b1">
+<button class="button" onclick="changeDirection()">
+<img alt="" height="30px" src="{{ url_for('static', filename='images/arrow.svg')}}"/>
+</button>
+</div>
+<div class="b2">
+<button class="button" onclick="commingSoon()">
+<img alt="" height="30px" src="{{ url_for('static', filename='images/subway.svg')}}"/>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="responseDataContainer1">
+<div class="responseDataContainer2">
+<div class="content">
+<h1 class="thisStation">Gullmarsplan</h1>
+<div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Hässelby strand</h2>
+<h2 class="time">12:21:00</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Hagsätra</h2>
+<h2 class="time">12:21:00</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Åkeshov</h2>
+<h2 class="time">12:24:00</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Farsta strand</h2>
+<h2 class="time">12:24:30</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Alvik</h2>
+<h2 class="time">12:27:15</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Skarpnäck</h2>
+<h2 class="time">12:28:00</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Hässelby strand</h2>
+<h2 class="time">12:31:00</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Hagsätra</h2>
+<h2 class="time">12:31:00</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Åkeshov</h2>
+<h2 class="time">12:34:00</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Farsta strand</h2>
+<h2 class="time">12:34:30</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Alvik</h2>
+<h2 class="time">12:37:15</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Skarpnäck</h2>
+<h2 class="time">12:38:00</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Hässelby strand</h2>
+<h2 class="time">12:41:00</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Hagsätra</h2>
+<h2 class="time">12:41:00</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Åkeshov</h2>
+<h2 class="time">12:44:00</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Farsta strand</h2>
+<h2 class="time">12:44:30</h2>
+</div>
+</div><div class="contentContainer" id="direction0">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Alvik</h2>
+<h2 class="time">12:47:15</h2>
+</div>
+</div><div class="contentContainer" id="direction1">
+<div class="container">
+<img alt="" class="lineImg" height="30px" src="{{ url_for('static', filename='images/greenLine.png')}}"/>
+<h2 class="destination">Skarpnäck</h2>
+<h2 class="time">12:48:00</h2>
+</div>
+</div></div>
+</div>
+</div>
+</body>
+<script>
+    // OnStart
+    // Everything starts in hidden state. On start this part runs and makes direction1 visable
+    var train = document.querySelectorAll("#direction0");
+    for (var i=0; i < train.length; i++) {
+        train[i].style.visibility= "visible";
+        train[i].style.position = "relative";
+    }
+
+    // OnClick on "change direction" button
+    let number = 2;
+    let oldDirection = "#direction0"
+    function changeDirection(){
+        
+        // the previus direction is made invisable again
+        var train = document.querySelectorAll(oldDirection);
+        for (var i=0; i < train.length; i++) {
+
+            train[i].style.visibility= "collapse";
+            train[i].style.position = "absolute";
+            
+        }
+
+        // Makes the new id
+        let direction = "#direction";
+        direction = direction.concat(number.toString());
+        oldDirection = direction;
+        var train = document.querySelectorAll(direction);
+
+        // if the number of directions runs out the counter resets
+        if(train.length == 0){
+            // if it is the case, the id string has to be remade
+            number = 0;
+            direction = "#direction";
+            direction = direction.concat(number.toString());
+            oldDirection = direction;  
+        }
+            
+        // The new direction is made visible
+        var train = document.querySelectorAll(direction);
+        console.log(direction)
+        for (var i=0; i < train.length; i++) {
+            console.log("running")
+            train[i].style.visibility= "visible";
+            train[i].style.position = "relative";
+        }
+
+        // add to the number so the direction will change
+        number = number + 1; 
+    }
+    // OnClick on "comming soon" button
+    function commingSoon() {
+        alert("comming soon");
+    }
+</script>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://use.fontawesome.com/27808ca44f.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/button.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/searchBar.css')}}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: rgb(0, 0, 255);
+            overflow-y: hidden;
+            
+            width: 100%;
+        }
+        .main{
+            width: 100%;
+            position:fixed;
+            height: 100vh;
+        }
+        .content{
+            height: 100%;
+            background-color: white;
+            padding: 30px;
+            border-radius: 30px 30px 0 0;            
+        }
+        .topBar{
+            z-index: 5;
+            height:100px;
+            color:#ffff;
+            text-align: center;
+            padding-top: 30px;
+            
+        }
+        .train{
+            position: absolute;
+            padding-top:40px;
+            padding-left: 30px;
+        }
+
+
+        .responseDataContainer{
+            z-index: 11;
+            padding-top:300px;
+            height: 200px;
+            width: 200px;
+            
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <div class="train">
+            <image src="{{ url_for('static', filename='images/sl_train2.png')}}" alt="" height=" 100px">
+        </div>
+        <div class="topBar"><h1>SLapp</h1></div>
+        <div class="content">
+            <div class="wrap">
+                <form class="search" action="/" method="POST">
+                   <input type="text" class="searchTerm" placeholder="Station"  name = "content" id = "content">
+                   <button type="submit" class="searchButton">
+                    <img src="{{ url_for('static', filename='images/search.svg')}}" alt="" height="20px">
+                  </button>
+                </form>
+
+             </div>
+             <div class="buttons">
+                 <div class="b1">
+                    <button class="button" onclick="searchFirst()">
+                        <img src="{{ url_for('static', filename='images/arrow.svg')}}" alt="" height="30px">
+                    </button>
+                 </div>
+                <div class="b2">
+                    <button class="button" onclick="commingSoon()">
+                        <img src="{{ url_for('static', filename='images/subway.svg')}}" alt="" height="30px">
+                    </button>
+                </div>
+                
+             </div>
+
+        </div>
+
+    </div>
+    <div class="responseDataContainer">
+        <div class="responseData">
+            <div class="abc">hyhyhyhyh</div>
+            
+         </div>
+     </div>
+</body>
+<script>
+    function searchFirst() {
+        alert("Ännu inte tillagt funtion");
+    }
+    function commingSoon() {
+        alert("Ännu inte tillagt funtion");
+    }
+</script>
+</html>
